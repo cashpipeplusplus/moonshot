@@ -1,0 +1,166 @@
+.blockquote {
+  /* Looks nice for a quote, and mimics other interpreters. */
+  font-family: monospace;
+
+  /* Offsets the block from the page. */
+  background-color: aliceblue;
+  border: 2px ridge grey;
+
+  /* Makes the border stay back from the edge of the text, which is nice. */
+  padding: 0.5em;
+
+  /* Vorpal is creating a span for this, but to have the border and background
+   * work the way we want, we style it as a block. */
+  display: block;
+}
+
+.title-line {
+  font-size: 130%;
+}
+
+.author-line, .copyright-line {
+  font-size: 90%;
+}
+
+.created-with-line {
+  font-size: 80%;
+}
+
+.room-heading {
+  font-weight: bold;
+  background-color: lavender;
+}
+
+/* Other room names, not in the heading that describes the current room. */
+:not(.room-heading) > .room-name {
+  font-weight: bold;
+  background-color: lavenderblush;
+}
+
+.direction-name {
+  font-weight: bold;
+  background-color: lavenderblush;
+}
+
+.hint {
+  font-style: italic;
+  background-color: linen;
+}
+
+.help-card {
+  /* Offsets the block from the page. */
+  background-color: beige;
+  border: 2px ridge grey;
+
+  /* Makes the border stay back from the edge of the text, which is nice. */
+  padding: 0.5em;
+
+  /* Vorpal is creating a span for this, but to have the border and background
+   * work the way we want, we style it as a block. */
+  display: block;
+}
+
+.plaque-card {
+  /* Offsets the block from the page. */
+  background-color: palegoldenrod;
+  border: 2px ridge grey;
+
+  /* Makes the border stay back from the edge of the text, which is nice. */
+  padding: 0.5em;
+
+  /* Vorpal is creating a span for this, but to have the border and background
+   * work the way we want, we style it as a block or inline-block.  Using
+   * inline-block makes it hug the text, which I like better for the plaque. */
+  display: inline-block;
+}
+
+.ending-card {
+  /* Offsets the block from the page. */
+  background-color: mediumspringgreen;
+  border: 2px ridge grey;
+
+  /* Makes the border stay back from the edge of the text, which is nice. */
+  padding: 0.5em;
+
+  /* Vorpal is creating a span for this, but to have the border and background
+   * work the way we want, we style it as a block or inline-block.
+   * Even worse, there is some bug in which trying to center the content in
+   * Inform causes the generated HTML to be all screwy, with the ending-card
+   * empty and the text outside it.  Ugh.
+   * So, to solve all that, we use block to take up the whole line, inline-size
+   * to shrink the background to the content, and margin to center it all. */
+  display: block;
+  inline-size: fit-content;
+  margin: 0 auto;
+}
+
+/* https://fonts.googleapis.com/css2?family=Short+Stack&display=swap */
+@font-face {
+  font-family: 'Short Stack';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Short Stack'),
+       local('ShortStack'),
+       url(https://fonts.gstatic.com/s/shortstack/v10/bMrzmS2X6p0jZC6EcmPFX9SVe34.woff2) format('woff2'),
+       url(https://fonts.gstatic.com/s/shortstack/v10/bMrzmS2X6p0jZC6EcmPFX-SS.ttf) format('truetype');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+.checklist-block {
+  /* Make it stand out, and look like paper. */
+  display: block;
+  background-color: aliceblue;
+  border: 1px solid black;
+
+  /* Fit to content. */
+  inline-size: fit-content;
+
+  /* Unless the content is larger 30 characters or so. */
+  max-width: 30em;
+}
+
+.checklist-contents {
+  /* The story says it's "scribbled out in childish print", so let's emulate
+   * that as much as we can. */
+
+  /* So that it has a more hand-written-looking font. */
+  font-family: 'Short Stack', cursive;
+
+  /* So that our transforms work. */
+  display: block;
+
+  /* Skew the text in a weird, scrawly way. */
+  transform: skew(7deg, 1deg);
+
+  /* Add padding, which helps keep the skewed text inside the outer block with
+   * the background. */
+  padding: 2em;
+}
+
+.personnel-file {
+  /* Make this look more like a typed document on yellowish paper. */
+
+  display: block;
+  background-color: lightyellow;
+  font-family: monospace;
+  border: 1px solid darkgrey;
+
+  font-size: 75%;
+  max-width: 24em;
+  padding: 2em;
+}
+
+/* Though I can't figure out why, Inform/Vorple creates an empty span of this
+ * class before the one with the content.  This hides it. */
+.personnel-file:empty {
+  display: none;
+}
+
+/* Text indentation in Inform sucks and is hard to figure out.  Do it in CSS
+ * instead, which sucks slightly less. */
+.personnel-file span {
+  display: block;  /* Or else text-indent doesn't work */
+  margin-left: 3.2em;  /* Indents all text */
+  text-indent: -3.2em;  /* Unindents the first line by the same amount */
+}

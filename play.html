@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MoonShot by Joey &amp; Charity Parrish - Play</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <meta name="author" content="Joey &amp; Charity Parrish">
+  <link rel="icon" type="image/png" href="Icon.png">
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" type="text/css" href="interpreter/roboto.css">
+<link rel="stylesheet" type="text/css" href="interpreter/jquery.powertip.css">
+<link rel="stylesheet" type="text/css" href="interpreter/toastr.css">
+<link rel="stylesheet" type="text/css" href="interpreter/vex.css">
+<link rel="stylesheet" type="text/css" href="interpreter/vex-theme-plain.css">
+
+<link rel="stylesheet" type="text/css" href="interpreter/haven.css">
+<link rel="stylesheet" type="text/css" href="interpreter/vorple.css">
+ <link rel='stylesheet' href='moonshot-custom-styles.css' type='text/css' media='all'></link></head>
+<body class="play">
+
+  <div id="gameport"><script src="interpreter/vorple.min.js"></script>
+<script src="interpreter/MoonShot.gblorb.js"></script>
+
+<script>
+if( location.protocol === "file:" ) {
+$( 'body' )
+.empty()
+.html( "<div><p>You are currently viewing the page from the filesystem. " +
+"Unfortunately Vorple requires that the page is viewed through " +
+"the HTTP protocol, that is, you'll need to either upload it " +
+"to the Internet or install a local server.</p>" +
+'<p>See <a href="https://vorple-if.com/docs/localhost" style="color:#dde">vorple-if.com/docs/localhost</a> ' +
+"for more information.</p>" +
+"</div>" )
+.find( 'div' )
+.css({
+margin: "2em",
+padding: "1em",
+color: "#fff",
+backgroundColor: "rgb(137, 50, 58)",
+border: "3px solid gray"
+});
+
+throw new Error( "Vorple can't be run from the filesystem" );
+}
+
+$( function() {
+$( '.container, .interpretercredit' ).remove();
+});
+
+vorple.options = {
+autosave: false,
+engineColors: false,
+story: ""
+};
+
+vorple.debug.off();
+vorple.init();
+</script></div>
+
+</body>
+</html>
+
