@@ -199,3 +199,68 @@ img.unicorn {
   display: flex;
   margin: 0 auto;
 }
+
+/* Based on https://codepen.io/thetypebeast/pen/KWNGGd by Jennifer */
+body.lsd::before {
+  content: ""; /* required for ::before */
+  position: fixed; /* don't scroll with page */
+  z-index: -100; /* place behind elements on page */
+  /* fill the page */
+  width: 100%;
+  height: 100%;
+  /* fill the background with a gradient */
+  background-image:
+      radial-gradient(circle farthest-side at top right, transparent, #def),
+      radial-gradient(ellipse farthest-corner at 0% 100%, transparent, #fed);
+  animation: lsd-bg-change 3s infinite;
+}
+@keyframes lsd-bg-change {
+  0%, 100% {
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    filter: hue-rotate(-180deg);
+  }
+}
+
+/* https://www.1001fonts.com/lovecrafts-diary-font.html */
+@font-face {
+  font-family: 'LovecraftsDiary';
+  src: local('LovecraftsDiary'),
+       url('LovecraftsDiary.woff') format("woff"),
+       url('LovecraftsDiary.woff2') format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* The alien paper uses this strange font.  Can also be applied to body.*/
+.alien-paper {
+  font-family: 'LovecraftsDiary';
+}
+/* This is explicitly the paper. */
+span.alien-paper {
+  /* Make it stand out, and look like paper. */
+  display: block;
+  background-color: aliceblue;
+  border: 1px solid black;
+
+  /* Fit to content. */
+  inline-size: fit-content;
+
+  /* Unless the content is larger 30 characters or so. */
+  max-width: 30em;
+
+  padding: 1em;
+}
+
+/* Though I can't figure out why, Inform/Vorple creates an empty span of this
+ * class before the one with the content.  This hides it. */
+span.alien-paper:empty {
+  display: none;
+}
+
+/* When the whole page is in alien paper mode, the alien paper reads in plain
+ * English. */
+body.alien-paper .alien-paper {
+  font-family: 'Roboto', sans-serif;
+}
